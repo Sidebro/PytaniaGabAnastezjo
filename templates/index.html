@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Losowanie pytań</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  </head>
+  <body>
+    <main class="wrapper">
+      <section class="hero">
+        <p class="eyebrow">Anestezjologia i Intensywna Terapia</p>
+        <h1>Baza pytań:</h1>
+      </section>
+
+      <section class="tile-grid">
+        {% for category_key, category in categories.items() %}
+        <article class="tile-card">
+          <p class="tile-tag">{{ category.label }}</p>
+          <p class="question" id="question-{{ category_key }}">
+            Kliknij przycisk, aby wylosować pytanie.
+          </p>
+          <p class="status" id="status-{{ category_key }}">Pula gotowa do losowania.</p>
+          <div class="actions">
+            <button class="draw-button" type="button" data-category="{{ category_key }}">
+              Losuj pytanie
+            </button>
+            <button class="reset-button" type="button" data-category="{{ category_key }}">
+              Resetuj
+            </button>
+          </div>
+        </article>
+        {% endfor %}
+      </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+  </body>
+</html>
