@@ -17,7 +17,7 @@ async function fetchQuestion(category, button) {
 
     const data = await response.json();
     questionElement.textContent = data.question;
-    statusElement.textContent = `Pozostalo pytań: ${data.remaining} z ${data.total}.`;
+    statusElement.textContent = `Pozostało pytań: ${data.remaining} z ${data.total}.`;
   } catch (error) {
     questionElement.textContent = "Wystąpił problem podczas pobierania pytania.";
     statusElement.textContent = "Nie udało sie pobrać pytania.";
