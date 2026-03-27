@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import random
-
+import os
 from flask import Flask, jsonify, render_template
 
 
@@ -187,5 +187,8 @@ def reset_category(category: str):
     )
 
 
+
+
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))  # Use Railway's PORT or fallback to 5000
+    app.run(host="0.0.0.0", port=port, debug=True)
